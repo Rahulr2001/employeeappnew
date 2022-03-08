@@ -1,0 +1,137 @@
+.leave{
+    margin-left: 230px;
+    height: 500px;
+    overflow-y: auto;
+}
+.datepick{
+    margin-top: 20px;
+    display: inline-flex;
+}
+
+.fleave{
+    width: 200px;
+    
+    border: 1px solid black ;
+    border-radius: 10px;
+    height: 40px;
+
+}
+
+.datelist{
+    margin: 5px 30px;
+    list-style:decimal;
+    
+}
+.datelist li{
+    margin-bottom: 20px;
+    background-color: rgba(0, 0, 0, 0.062);
+    padding: 10px 30px ;
+}
+.amount1{
+    min-height: 40px;
+    max-height: 400px;
+    min-width: 40px;
+
+    max-width: fit-content;
+    background-color: rgba(0, 0, 0, 0.062);
+    padding: 10px;
+    border: 2px solid black;
+    margin-bottom: 20px;
+}
+.amount{
+    min-height: 0px;
+    max-height: 200px;
+    min-width: 0px;
+    overflow-y: scroll;
+
+    margin-bottom: 10px;
+    
+}
+
+.amountlabel{
+margin-top: 20px;
+ display: block;
+}
+
+.hyphen{
+    margin-top: 30px;
+    margin-left: 10px;
+    margin-right: 10px;
+    
+}
+
+.total{
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.note{
+    min-height: 100px;
+    min-width: 500px;
+}
+
+.usedey{
+    padding: 10px 80px;
+    background-color: rgba(0, 0, 0, 0.027);
+}
+.namey,.datey{
+    padding: 10px 50px;
+    background-color: rgba(0, 0, 0, 0.027);
+}
+.sortbtn{
+    margin-left: 10px;
+    background: transparent;
+    border: none;
+}
+.descrip{
+    padding: 10px 200px;
+    background-color: rgba(0, 0, 0, 0.027);
+}
+
+.apidata{
+    text-align: center;
+    text-transform: capitalize;
+    font-weight: 500;
+}
+
+.apidata td{
+padding: 5px 0px;
+}
+
+.nameselect{
+    display: block;
+    border-radius: 2px;
+    width: 100px;
+    height: 30px;
+    border: 2px solid black;
+    padding: 0%;
+}
+#restid{
+    display: block;
+    width:200px;
+    height: 40px;
+    border: 2px solid black;
+    padding: 0%;
+    padding-left: 10px;
+    border-radius: 2px;
+    font-size: large;
+    text-transform: capitalize;
+}
+
+.optionss{
+    height: 20px;
+    padding: 5px;
+}
+
+#btnreq{
+padding: 10px 20px 10px 20px;
+margin-top: 50px;
+position: relative;
+background-color: #008b8b;
+text-decoration: none;
+color: white;
+border-radius: 3px;
+border-color: #008b8b;
+border-width: 0px;
+cursor: pointer;
+-webkit-tap-highlight-color: transparent;
+}

@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "serviceConfiguration": {
+    "apiName": "empapp",
+    "serviceName": "AppSync",
+    "gqlSchemaPath": "/mnt/d/Rahul's Applications/EmployeeApp/empapp/amplify/backend/api/empapp/schema.graphql",
+    "defaultAuthType": {
+      "mode": "API_KEY",
+      "expirationTime": 100,
+      "apiKeyExpirationDate": "2022-06-14T17:37:39.520Z",
+      "keyDescription": ""
+    }
+  }
+}
