@@ -14,6 +14,8 @@ class Createemp extends Component{
 
   
 render(){
+
+  
     return(
         <div className="empcontainer">
     <Formik
@@ -97,8 +99,10 @@ render(){
           <small  >{errors.email}</small>
           <label>Phone.NO</label>
           <input
+          id="phoneid"
+          
           name='phone'
-          type='tel'
+          type='number'
           onChange={handleChange}
           value={values.phone}
           autoComplete="off"
@@ -122,6 +126,7 @@ render(){
           <label >AGE:</label>
           <input
             name='age'
+            type='number'
             //placeholder='Email'
             onChange={handleChange}
             //onChange={this.onChange}

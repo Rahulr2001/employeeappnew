@@ -136,7 +136,7 @@ render() {
   
 </div>
 <SearchIcon className="searchicon"></SearchIcon>
-<input className="searchbar" label="Searchs" onChange={this.onChange} placeholder="  search by employee" />
+<input className="searchbar" label="Search" onChange={this.onChange} placeholder="  search by employee" />
 
 </div>
   <div className="empcontainer0" >
@@ -167,13 +167,14 @@ render() {
       <p>{rest.state}</p>
       </td>
     <td>{rest.country}</td> 
-    <button onClick={() => this.handleRemove(rest.id)}>x</button>
+    <td>
+    <button onClick={() => this.handleRemove(rest.id)} className='deletey'><i className="fa fa-trash-o"></i></button>
+    </td>
     </tr>
     
   ))
   }
 </table>
-<table>
   {
     this.state.employees.map((rest, i) => (
       <table className="mobiletable">
@@ -228,7 +229,7 @@ render() {
   
   ))
   }
-  </table>
+  
 
   </div></div>
 );

@@ -28,20 +28,141 @@ class Leaveform extends Component{
     
 
 
-    render(){
-          
+    render(){       
       
 
 
       
-      $(function(){
+      $(document).ready(function () {
         
-        $('#btnreq').click(function() {
+        // Validate Username
+            $('#usercheck').hide();   
+            let usernameError = true;
+            $('#d1').keyup(function () {
+                validateUsername();
+            });
+             
+            function validateUsername() {
+              let leavedat = $('#d1').val();
+              if (leavedat.length == '') {
+              $('#usercheck').show();
+                  usernameError = false;
+                  return false;
+              }
+              else {
+                  $('#usercheck').hide();
+                  usernameError=true;
+              }
+            } 
+            
+            $('#usercheck2').hide();   
+            let usernameError1 = true;
+            $('#d2').keyup(function () {
+                validateUsername2();
+            });
+             
+            function validateUsername2() {
+              let leavedat2 = $('#d2').val();  
+              if (leavedat2.length == '') {
+              $('#usercheck2').show();
+                  usernameError = false;
+                  return false;
+              }
+              else {
+                  $('#usercheck2').hide();
+                  usernameError1=true;
+              }
+            }   
+            
+            $('#notecheck').hide();   
+            let noteError = true;
+            $('#notee').keyup(function () {
+                validatenote();
+            });
+             
+            function validatenote() {
+              let leavenot = $('#notee').val();  
+              if (leavenot.length == '') {
+              $('#notecheck').show();
+                  noteError = false;
+                  return false;
+              }
+              else {
+                  $('#notecheck').hide();
+                  noteError=true;
+              }
+            }
+
+            $('#amountcheck').hide();   
+            let amountError = true;
+            $('#dif').keyup(function () {
+                validateamount();
+            });
+             
+            function validateamount() {
+              var customString="Invalid";    
+              //let leaveamt = $('#dif').text().trim();  
+              if (customString == $('#dif').text()) {
+              $('#amountcheck').show();
+                  amountError = false;
+                  return false;
+              }
+              else {
+                  $('#amountcheck').hide();
+                  amountError=true;
+              }
+            }
+
+
+
+        // Submit button
+            $('#btnreq').click(function (e) {
+                validateUsername();
+                validateUsername2();
+                validatenote();
+                validateamount();
+                
+                if ((usernameError == true) &&
+                (usernameError1 == true) && (noteError == true) && (amountError == true)) 
+                {  
+                  e.preventDefault();               
+                  var leavedate = $('#d1').val();
+                  var leavedays = $('#dif').text();
+                  var leavenote=$('#notee').val();       
+                  var id=document.getElementById("restid").value;
+                  let leavename = $("#restid option:selected").text();
+                  console.log(id,leavedate,leavedays,leavenote,leavename)
+                  const updatei = async (id,leavedate,leavedays,leavenote,leavename) => {
+                    try {
+                      const value = { id,leavedate,leavedays,leavenote,leavename}
+                      //const restaurants = [...this.state.restaurants, restaurant]
+                      //this.setState({ restaurants, Name: '', Email: '', Location: '' })
+                      await API.graphql(graphqlOperation(updateTodo, {input: value}))
+                      console.log('Data successfully created!')
+                      
+                    } catch (err) {
+                      console.log('error: ', err)
+                      alert(err)
+                    }
+                  } 
+                  updatei(id,leavedate,leavedays,leavenote,leavename);
+                  return true;
+                }  
+                else {
+                  
+                    return false;
+                }
+            });
+        });
+
+        
+        /*e.preventDefault();
         var leavedate = $('#d1').val();
         var leavedays = $('#dif').text();
         var leavenote=$('#notee').val();       
         var id=document.getElementById("restid").value;
         let leavename = $("#restid option:selected").text();
+        console.log(id,leavedate,leavedays,leavenote,leavename)
         const updatei = async (id,leavedate,leavedays,leavenote,leavename) => {
           try {
             const value = { id,leavedate,leavedays,leavenote,leavename}
@@ -56,11 +177,9 @@ class Leaveform extends Component{
             alert(err)
           }
         } 
-        updatei(id,leavedate,leavedays,leavenote,leavename);
+        updatei(id,leavedate,leavedays,leavenote,leavename);*/
         
-      });  
-      }
-      )
+      
 
 
       $(function(){
@@ -104,6 +223,7 @@ class Leaveform extends Component{
 
 
         $(document).ready(() => {
+          
             //$('#calc').click(() => {
             var d1 = $('#d1').val();
             var d2 = $('#d2').val();
@@ -129,10 +249,11 @@ class Leaveform extends Component{
                 $('#dateList').html(dateListItems)
                 $('#dif').text(workingDaysBetweenDates(d1,d2));
               }
-            })      
+                 
                      
            // });
           });
+        });
           let workingDaysBetweenDates = (d0, d1) => {
             /* Two working days and an sunday (not working day) */
             //var holidays = ['2016-05-03', '2016-05-05', '2016-05-07'];
@@ -142,7 +263,7 @@ class Leaveform extends Component{
           
           // Validate input
             if (endDate < startDate) {
-              return "Invalid ";
+              return "Invalid";
             }
           
           // Calculate days between dates
@@ -194,9 +315,9 @@ class Leaveform extends Component{
           
         return(
             <div className='leave'>
-              <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>
+              
             <h1 id='result'>Request Time Off</h1>
-            <form>
+            <form action="">
 
            
             <select  id="restid" >
@@ -211,12 +332,19 @@ class Leaveform extends Component{
             <div className='datepick'>
             <div>
             <label>From*</label>
-            <input type="date" className="fleave"  id="d1"  />
+            <input type="date" className="fleave"  id="d1"/>
+            <small id="usercheck">
+                    select your date
+              </small>
+            
             </div>
             <h2 className='hyphen'>-</h2>
             <div>
             <label>To*</label>
-            <input type="date" className='fleave'  id="d2"  />
+            <input type="date" className='fleave'  id="d2"/>
+            <small id="usercheck2">
+                 select your date
+              </small>
             </div>
             </div>         
             
@@ -227,18 +355,29 @@ class Leaveform extends Component{
             </div>
             <div className='totaldays'>
             <span className='total' id="dif"></span>  
-            </div>        
             </div>
+                    
+            </div>
+            <small id="amountcheck">
+                    enter valid date
+              </small>
+
 
             
             <label>Note</label>
             <div>
             <textarea className='note' id="notee"></textarea>
+            <small id="notecheck">
+                    this field cannot be empty
+              </small>
             </div>
-            <button id='btnreq' type='submit'>Send Request</button>
+            <button type="submit" id="btnreq"
+             value="Submit">Request Leave</button>
+            </form>
+            
             
 
-            </form>
+            
             </div>
         )
         }

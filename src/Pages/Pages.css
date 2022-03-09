@@ -86,6 +86,18 @@ border-width: 0px;
    
 }
 
+#phoneid::-webkit-outer-spin-button,
+#phoneid::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.deletey{
+  background: transparent;
+  font-size:20px;
+  color:red;
+  border: none;
+}
+
 
 .emptab {
     width: 100%;
@@ -106,6 +118,7 @@ border-width: 0px;
     border-collapse: collapse;
     width: 100%;
     height: 100%;
+    text-transform: capitalize;
     
   }
     
@@ -121,6 +134,7 @@ border-width: 0px;
        border-left: solid 	#32CD32 ;
        border-left-width:10px ;
        padding-left:20px ;
+       
    }
 
  
